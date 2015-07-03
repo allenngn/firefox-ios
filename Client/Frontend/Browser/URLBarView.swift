@@ -40,7 +40,7 @@ protocol URLBarDelegate: class {
     func urlBarDidPressReload(urlBar: URLBarView)
     func urlBarDidBeginEditing(urlBar: URLBarView)
     func urlBarDidEndEditing(urlBar: URLBarView)
-    func urlBarDidLongPressLocation(urlBar: URLBarView)
+    func urlBarDidLongPressLocation(urlBar: URLBarView, completion: ((success: Bool) -> Void)?)
     func urlBarDidPressScrollToTop(urlBar: URLBarView)
     func urlBar(urlBar: URLBarView, didEnterText text: String)
     func urlBar(urlBar: URLBarView, didSubmitText text: String)
@@ -547,8 +547,8 @@ extension URLBarView: BrowserLocationViewDelegate {
         updateLayoutForEditing(editing: true)
     }
 
-    func browserLocationViewDidLongPressLocation(browserLocationView: BrowserLocationView) {
-        delegate?.urlBarDidLongPressLocation(self)
+    func browserLocationViewDidLongPressLocation(browserLocationView: BrowserLocationView, completion: ((success: Bool) -> Void)?) {
+        delegate?.urlBarDidLongPressLocation(self, completion: completion)
     }
 
     func browserLocationViewDidTapReload(browserLocationView: BrowserLocationView) {
