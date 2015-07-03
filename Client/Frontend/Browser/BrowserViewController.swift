@@ -844,6 +844,10 @@ extension BrowserViewController: BrowserDelegate {
 
         let errorHelper = ErrorPageHelper()
         browser.addHelper(errorHelper, name: ErrorPageHelper.name())
+
+        let windowEventsHelper = WindowEventsHelper(browser: browser)
+        windowEventsHelper.delegate = self
+        browser.addHelper(windowEventsHelper, name: WindowEventsHelper.name())
     }
 
     func browser(browser: Browser, willDeleteWebView webView: WKWebView) {
@@ -1972,5 +1976,11 @@ extension BrowserViewController: HashchangeHelperDelegate {
         {
             updateNavigationToolbarStates(tab, webView: webView)
         }
+    }
+}
+
+extension BrowserViewController: WindowEventsHelperDelegate {
+    func windowEventsHelperDidClose(windowEventsHelper: WindowEventsHelper) {
+        println("Window closing!!!")
     }
 }
