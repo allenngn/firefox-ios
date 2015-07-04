@@ -1983,7 +1983,7 @@ extension BrowserViewController: ContextMenuHelperDelegate {
                     self.getImage(url) { UIImageWriteToSavedPhotosAlbum($0, nil, nil, nil) }
                 }
                 else {
-                    let accessDenied = UIAlertController(title: "Need Access To Save", message: "Please allow Firefox access to photo library in order to save image.", preferredStyle: UIAlertControllerStyle.Alert)
+                    let accessDenied = UIAlertController(title: "Photo Library Access", message: "Firefox needs access privileges to the photo library to save this image. Please enable these privileges in the privacy settings.", preferredStyle: UIAlertControllerStyle.Alert)
                     let dismissAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
                     accessDenied.addAction(dismissAction)
                     let settingsAction = UIAlertAction(title: "Change Access Settings", style: UIAlertActionStyle.Default ) { (action: UIAlertAction!) -> Void in
