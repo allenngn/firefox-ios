@@ -141,7 +141,7 @@ class SearchEnginesTests: XCTestCase {
         XCTAssertTrue(engines2.shouldShowSearchSuggestions)
     }
 
-    func testOldDefaultShouldDisable() {
+    func testShouldDisableOldDefault() {
         let prefs = MockProfilePrefs()
         let engines = SearchEngines(prefs: prefs)
 
